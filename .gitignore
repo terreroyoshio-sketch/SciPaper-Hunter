@@ -37,6 +37,9 @@ logs/*.tmp
 # Archives (historical skill backups, not active project files)
 archives/
 
+# Skill backups (community collections, not active project files)
+.claude/skills_backup_*/
+
 # Test artifacts (regenerable)
 nature_skills_test/
 office_skill_test/
@@ -71,6 +74,9 @@ office_skill_test/
 # Windows shortcuts
 *.lnk
 
+# Local path config (personal, machine-specific)
+config/local_paths.json
+
 # Do NOT ignore:
 # .claude/         — project configuration
 # reports/         — audit reports
@@ -79,4 +85,4 @@ office_skill_test/
 # references/
 # manuscript/
 # outputs/
-# config/
+# config/          — except local_paths.json
