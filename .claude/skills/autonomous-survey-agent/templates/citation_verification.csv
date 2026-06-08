@@ -1,0 +1,2 @@
+bibtex_key,title,doi,title_match,doi_resolvable,year_match,venue_match,in_text_cited,claim_accuracy,status,notes
+"Author2024","Full Paper Title","10.1234/example","yes/no/partial","yes/no/error","yes/no","yes/no","yes/no","accurate/partial/mismatch","verified/unverified/flagged","Any notes about this citation"

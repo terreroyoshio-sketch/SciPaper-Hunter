@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+*.lock
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment
+.env
+.env.*
+credentials*
+*.key
+*.pem
+*secret*
+*token*
+
+# Logs
+logs/*.tmp
+
+# Browser profiles (sensitive: cookies, sessions)
+.browser/
+
+# Archives (historical skill backups, not active project files)
+archives/
+
+# Test artifacts (regenerable)
+nature_skills_test/
+office_skill_test/
+
+# Backup files
+*.bak
+*.bak_*
+
+# Build artifacts
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.toc
+*.lof
+*.lot
+
+# Temp files
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Windows shortcuts
+*.lnk
+
+# Do NOT ignore:
+# .claude/         — project configuration
+# reports/         — audit reports
+# logs/            — structured logs (except .tmp)
+# docs/
+# references/
+# manuscript/
+# outputs/
+# config/

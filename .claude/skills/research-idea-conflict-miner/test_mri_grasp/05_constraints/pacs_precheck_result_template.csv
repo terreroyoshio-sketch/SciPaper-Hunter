@@ -1,0 +1,2 @@
+query_date,date_range,total_abdominal_dce_mri,GRASP_cases,breath_hold_3D_T1_cases,paired_same_exam_cases,cases_with_motion_artifact,cases_with_arterial_phase_failure,cases_with_report_text,cases_with_technologist_notes,available_readers,can_anonymize,irb_needed,precheck_conclusion,next_action
+[YYYY-MM-DD],[YYYY-MM-DD to YYYY-MM-DD],[number],[number],[number],[number],[number or unknown],[number or unknown],[yes or no],[yes or no],[number],[yes or no],[yes or no],[feasible / limited / infeasible],[re-enter Stage 5 / narrow scope / suspend]

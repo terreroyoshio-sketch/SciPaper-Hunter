@@ -1,0 +1,2 @@
+title,authors,year,venue,doi,lqs_score,category,theme_cluster,research_question,method,dataset,key_finding,limitation,relevance_to_review,citable_sentence,verification_status
+"Example Paper Title","Author1, Author2",2024,"Conference Name","10.1234/example",8.5,A,"Theme 1","Research question here","Method description","Dataset used","Core finding","Limitation","How this supports the review","Key sentence for citation","unverified"

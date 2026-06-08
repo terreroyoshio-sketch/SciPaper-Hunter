@@ -1,0 +1,21 @@
+field_name,required_or_optional,source_system,purpose,example_value,privacy_level,can_export,notes
+anonymous_patient_id,required,RIS/PACS,跨序列患者匹配,PAT_001,medium,yes_after_anonymization,原始病历号不可导出；需用匿名ID
+study_date,required,DICOM header,时间范围界定,2025-03-15,low,yes,仅用于判断时间段
+modality,required,DICOM header,确认MRI检查,MR,low,yes,
+body_part,required,DICOM header,确认腹部检查,ABDOMEN or LIVER,low,yes,
+protocol_name,required,DICOM header,识别检查协议类型,Abdomen_DCE_GRASP,low,yes,
+series_description,required,DICOM header,识别GRASP和传统序列,"GRASP_Radial_3D_T1" or "THRIVE_3D_T1",low,yes,核心字段；用于判断序列类型
+sequence_name,recommended,DICOM header,确认序列技术,GRASP,low,yes,
+scanner_vendor,recommended,DICOM header,设备厂商,Siemens or Philips or GE,low,yes,
+scanner_model,recommended,DICOM header,设备型号,Skyra or Ingenia or Discovery,low,yes,用于判断设备一致性
+field_strength,recommended,DICOM header,场强,1.5T or 3.0T,low,yes,
+contrast_phase,recommended,DICOM header,确认是动态增强,arterial or portal or delayed,low,yes,
+GRASP_present,required,DICOM header,核心条件,TRUE or FALSE,low,yes,从series_description判断
+breath_hold_3D_T1_present,required,DICOM header,核心条件,TRUE or FALSE,low,yes,从series_description判断
+same_exam_pair,required,DICOM header,核心条件,TRUE or FALSE,low,yes,同一AccessionNumber包含两种序列
+motion_artifact_visible,recommended,technologist_note or reader_score,yes or no,low,yes_after_definition,预查阶段可不填；正式研究才需要
+arterial_phase_quality,recommended,reader_assessment,good or poor,low,yes_after_definition,预查阶段可不填；正式研究才需要
+reader_1_score,optional,research_design,正式研究读片者1评分,3,low,not_in_precheck,预查阶段不需要导出
+reader_2_score,optional,research_design,正式研究读片者2评分,4,low,not_in_precheck,预查阶段不需要导出
+report_text_available,recommended,RIS,备用验证,yes or no,medium,yes_after_anonymization,正式研究时需匿名化后使用
+technologist_note_available,recommended,PACS or RIS,呼吸配合判断,yes or no,medium,yes_after_anonymization,技师备注可能有呼吸配合描述
