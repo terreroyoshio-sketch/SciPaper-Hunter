@@ -1,0 +1,10 @@
+{
+  "name": "research-workbench",
+  "version": "0.0.0-draft",
+  "description": "DRAFT（未激活）：科研工作台插件骨架 —— 文献检索、论文写作、图表、审稿模拟、引用核查工作流的可分发打包。此清单为迁移草稿，不属于任何 marketplace、未安装。",
+  "author": {
+    "name": "张涵"
+  },
+  "license": "UNLICENSED-DRAFT-NOT-FOR-DISTRIBUTION",
+  "keywords": ["research", "academic-writing", "literature-review", "citation-audit", "draft"]
+}

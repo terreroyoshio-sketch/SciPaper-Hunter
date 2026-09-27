@@ -5,3 +5,9 @@ timestamp,action,file_path,reason,agent_or_command,backup_path
 2026-06-08 12:19:34,CREATE,.claude/rules/ 4 office-* files,office rules,office-productivity-workbench,
 2026-06-08 12:19:34,CREATE,.claude/agents/ 6 office agents,office subagents,office-productivity-workbench,
 2026-06-08 12:19:34,CREATE,.claude/hooks/ 3 office hooks,office hooks draft,office-productivity-workbench,
+2026-09-27 17:56:06,CREATE,.claude/skills/agent-memory-patterns/,github-fusion round: pattern skill (repo copy + user-level mirror),claude-code-github-fusion,
+2026-09-27 17:56:06,CREATE,.claude/skills/decision-engine-patterns/,github-fusion round: pattern skill (repo copy + user-level mirror),claude-code-github-fusion,
+2026-09-27 17:56:06,CREATE,.claude-plugin-draft/,official plugin structure draft (inert; not activated, not installed),claude-code-github-fusion,
+2026-09-27 17:56:06,CREATE,reports/github_candidate_audit_20260927.md,full decision report for scan round,claude-code-github-fusion,
+2026-09-27 17:56:06,CREATE,reports/open-science_gap_analysis_20260927.md,gap audit vs aipoch/open-science (page-level, read-only),claude-code-github-fusion,
+2026-09-27 17:56:06,MODIFY,<main-checkout>/.research-ai/engineering-skill-registry.yaml,append pattern_skill_sources_round_20260927,claude-code-github-fusion,.research-ai/backups/20260927-175556-before-github-fusion/

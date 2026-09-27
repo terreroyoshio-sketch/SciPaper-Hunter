@@ -38,3 +38,17 @@
 - 引用核验通过前不进入写作
 - 删除前必须确认
 - 所有修改记录到 file_change_log.csv
+
+## v0.3 — 2026-09-27 GitHub 候选融合批次（标准集）
+
+### 新增
+- `.claude/skills/agent-memory-patterns/`（SKILL.md + references/ecc-hindsight-evidence.md；用户级镜像同）
+- `.claude/skills/decision-engine-patterns/`（SKILL.md + references/jev-laya-evidence.md；用户级镜像同）
+- `.claude-plugin-draft/`（官方插件结构骨架 + 迁移蓝图；research-workbench/ 含 plugin.json、.mcp.json、commands/agents/skills/hooks 槽位说明；未激活）
+- `reports/github_candidate_audit_20260927.md`（全量决策报告，A/P/T 核验标注 + 五档决策）
+- `reports/open-science_gap_analysis_20260927.md`（对照审计：10 维度 + 4 吸收建议 + 5 不吸收理由）
+
+### 规则
+- 零安装：只提取模式，不部署来源项目；任何安装需单独批准
+- 来源数字标注核验方式（API/页面/未核）与快照日期；自报与独立复测分开写
+- 下轮候选：写作治理波（sepia/CCFA-Skills 等 6 项）、addyosmani/agent-skills、CLI-Anything（见决策报告）
