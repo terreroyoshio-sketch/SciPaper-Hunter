@@ -1,0 +1,55 @@
+{
+  "figure_size_mm": [170, 219],
+  "footer_marker": "PLACEHOLDER DEMO - synthetic content for pipeline validation (not real research data)",
+  "legend": [
+    ["input", "Input"],
+    ["process", "Process"],
+    ["method", "Method"],
+    ["result", "Result"],
+    ["accent", "Highlight"]
+  ],
+  "bands": [
+    {
+      "index": "1",
+      "title": "Model Setup and Data Preprocessing",
+      "boxes": [
+        ["Forcing Data", "input"],
+        ["Process Model", "process"],
+        ["Derived Variables", "process"]
+      ],
+      "plot": "timeseries"
+    },
+    {
+      "index": "2",
+      "title": "Determining Response Pathways",
+      "boxes": [
+        ["Index Series", "method"],
+        ["Correlation\nAnalysis", "method"],
+        ["Pathway\nClassification", "method"]
+      ],
+      "plot": "scatter"
+    },
+    {
+      "index": "3",
+      "title": "Constructing the Composite Index",
+      "boxes": [
+        ["Marginal\nDistributions", "accent"],
+        ["Dependence\nModel", "method"],
+        ["Composite\nIndex", "result"],
+        ["Event\nMetrics", "result"]
+      ],
+      "plot": "stepseries"
+    },
+    {
+      "index": "4",
+      "title": "Attribution of Driving Factors",
+      "boxes": [
+        ["Feature Set", "input"],
+        ["Gradient\nBoosting", "process"],
+        ["Attribution\nAnalysis", "method"],
+        ["Contribution\nRanking", "result"]
+      ],
+      "plot": "bars"
+    }
+  ]
+}
