@@ -72,3 +72,13 @@
 
 ### 规则/发现
 - claude CLI 位于 `%LOCALAPPDATA%\Claude-3p\claude-code\2.1.128\claude.exe`（不在 PATH）；插件更新遇 SSH 阻塞时，用一次性 `GIT_CONFIG_*` 环境变量改写为 HTTPS（不改全局 git 配置）
+
+## v0.5 — 2026-09-28 CCFA 评审格式补充（方案 D 补做）
+
+### 新增
+- `.claude/skills/manuscript-review-format/`（SKILL.md + references/ccfa-source-notes.md；用户级镜像同）
+- 只读 extract：`~/.claude/reference/ccfa-skills-extract-20260928/`（CCFA-Skills，MIT）
+
+### 内容
+- 三档固定格式（详细 14 节 / 写作 9 节 / 简明 5 节）、finding record 九字段与反证复核纪律、七维量表（1-5）+ 总评 1-10 + 置信度 1-5、scorecard 模板、改判条件表、跨版本对比三分规则
+- 边界：只提取格式规范；其写作子量表与校验脚本留在源仓库（未安装）

@@ -19,3 +19,5 @@ timestamp,action,file_path,reason,agent_or_command,backup_path
 2026-09-28 11:56:10,UPDATE,~/.claude/plugins (agent-skills 0.6.10 to 0.6.11),user-approved update,claude-code-batch2,
 2026-09-28 11:56:10,DELETE,~/.claude/plugins/marketplaces/addy-agent-skills,orphan clone; backup+deletion_log,claude-code-batch2,.claude/plugins/backups/addy-agent-skills.bak_20260928_115338,
 2026-09-28 11:56:10,MODIFY,<main-checkout>/.codex+.agents/skills/research-execution-provenance,landing: v1.1.1 + artifact-and-review-evidence + .agents sync,claude-code-batch2,.research-ai/backups/20260928-115533-before-provenance-1.1.1/,
+2026-09-28 12:06:14,CREATE,.claude/skills/manuscript-review-format/,batch2 addendum: CCFA review-format extract (repo + user-level mirror),claude-code-batch2,
+2026-09-28 12:06:14,CREATE,~/.claude/reference/ccfa-skills-extract-20260928/,read-only extract clone of CCFA-Skills (MIT) for format extraction,claude-code-batch2,
