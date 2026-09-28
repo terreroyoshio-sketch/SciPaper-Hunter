@@ -14,10 +14,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from trd_kit import est_text_mm, wrap_tokens
+from trd_kit import wrap_tokens
 
-MIN_FONT_FAIL = 6.0
-MIN_FONT_WARN = 6.5
+MIN_FONT_FAIL = 8.0  # SCI 默认（2026-09-28 修正）；venue override 需记录依据
+MIN_FONT_WARN = 8.0
 GRAY_MIN_DELTA = 0.05
 OVERLAP_AREA_MM2 = 0.5
 
@@ -33,23 +33,42 @@ def _intersect_area(a, b) -> float:
     return x * y
 
 
-def _est_lines(text: str, fontsize: float, usable_w: float) -> int:
-    lines = 0
-    for para in (text or "").split("\n"):
-        tokens = wrap_tokens(para)
-        if not tokens:
-            lines += 1
-            continue
-        cur = ""
-        n = 1
-        for tok in tokens:
-            if est_text_mm(cur + tok, fontsize) <= usable_w:
-                cur += tok
-            else:
-                n += 1
-                cur = tok.lstrip()
-        lines += n
-    return lines
+def _make_line_counter(fig):
+    """Real-metric line counter: wraps with the ACTUAL renderer text metrics
+    (2026-09-28: replaced the character-width heuristic in the overflow check)."""
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    px_per_mm = fig.dpi / 25.4
+    cache: dict = {}
+
+    def width_px(s: str, fontsize: float) -> float:
+        key = (s, fontsize)
+        if key not in cache:
+            t = fig.text(0.0, -10.0, s, fontsize=fontsize)
+            cache[key] = float(t.get_window_extent(renderer=renderer).width)
+            t.remove()
+        return cache[key]
+
+    def count(text: str, fontsize: float, usable_mm: float) -> int:
+        usable = usable_mm * px_per_mm
+        lines = 0
+        for para in (text or "").split("\n"):
+            tokens = wrap_tokens(para)
+            if not tokens:
+                lines += 1
+                continue
+            cur = ""
+            n = 1
+            for tok in tokens:
+                if width_px(cur + tok, fontsize) <= usable:
+                    cur += tok
+                else:
+                    n += 1
+                    cur = tok.lstrip()
+            lines += n
+        return lines
+
+    return count
 
 
 def check(canvas, outdir=None, name: str = "qa_report") -> tuple[str, list[str], list[str]]:
@@ -81,12 +100,13 @@ def check(canvas, outdir=None, name: str = "qa_report") -> tuple[str, list[str],
         elif e.fontsize < MIN_FONT_WARN:
             warns.append(f"font<{MIN_FONT_WARN}pt: '{e.id}' = {e.fontsize}pt")
 
+    measure = _make_line_counter(canvas.fig)
     for e in els:
         if e.kind != "box" or not e.rect or not e.label:
             continue
         x, y, w, h = e.rect
         usable_w = w - 3.0
-        need = _est_lines(e.label, e.fontsize, usable_w) * e.fontsize * 1.25 * 25.4 / 72.0
+        need = measure(e.label, e.fontsize, usable_w) * e.fontsize * 1.25 * 25.4 / 72.0
         if need > h - 1.0:
             fails.append(f"text overflow: '{e.id}' needs ~{need:.1f}mm > {h - 1.0:.1f}mm: {e.label!r}")
 

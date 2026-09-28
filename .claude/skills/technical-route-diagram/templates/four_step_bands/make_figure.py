@@ -94,7 +94,7 @@ def draw_bars(ax) -> None:
     ax.set_xlim(0, 0.62)
     ax.set_ylim(-0.6, len(vals) - 0.4)
     for yi, idx in enumerate(order):
-        ax.text(vals[idx] + 0.012, yi, names[idx], va="center", ha="left", fontsize=6.5, color="#222222")
+        ax.text(vals[idx] + 0.012, yi, names[idx], va="center", ha="left", fontsize=8.0, color="#222222")
     for side in ("top", "right", "left"):
         ax.spines[side].set_visible(False)
     ax.spines["bottom"].set_linewidth(0.5)
@@ -120,7 +120,7 @@ def render(content: dict, outdir: Path, name: str) -> str:
 
         boxes = band["boxes"]
         n = len(boxes)
-        box_w = 24.0 if n <= 3 else 22.0
+        box_w = 24.0 if n <= 3 else 23.0
         x0, x1 = BOX_REGION
         step = (x1 - x0 - box_w) / (n - 1) if n > 1 else 0.0
         box_top = y_top + 19.25
@@ -140,7 +140,7 @@ def render(content: dict, outdir: Path, name: str) -> str:
             band_bottom = y_top + BAND_H
             c.block_arrow_down(BAND_X + BAND_W / 2.0, band_bottom + 0.7, band_bottom + 8.7, id=f"gap-arrow-{i + 1}")
 
-    c.text(BAND_X, FOOTER_TOP, content["footer_marker"], fontsize=6.5, color=tk.MUTED, italic=True, id="footer-marker")
+    c.text(BAND_X, FOOTER_TOP, content["footer_marker"], fontsize=8.0, color=tk.MUTED, italic=True, id="footer-marker")
 
     paths = c.export(outdir, name)
     status, _, _ = check(c, outdir=outdir, name="qa_report")

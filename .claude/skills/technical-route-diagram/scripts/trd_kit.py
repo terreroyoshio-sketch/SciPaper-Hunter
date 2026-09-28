@@ -7,6 +7,7 @@ Every placed element is recorded on the Canvas for qa_layout checks.
 
 from __future__ import annotations
 
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -15,6 +16,14 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyArrowPatch, FancyBboxPatch, Polygon
+
+_TYP_SCRIPTS = Path(__file__).resolve().parents[2] / "scientific-typography" / "scripts"
+if str(_TYP_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_TYP_SCRIPTS))
+try:
+    from typography import apply_typography as _apply_typography
+except Exception:  # pragma: no cover - fallback keeps the kit standalone
+    _apply_typography = None
 
 INK = "#222222"
 MUTED = "#6E6E6E"
@@ -36,6 +45,9 @@ PT_TO_MM = 25.4 / 72.0
 
 
 def apply_style() -> None:
+    if _apply_typography is not None:
+        _apply_typography("sci-sans")
+        return
     plt.rcParams.update(
         {
             "font.family": "sans-serif",
@@ -113,8 +125,8 @@ class Canvas:
         h: float,
         index: str,
         title: str,
-        title_size: float = 8.5,
-        badge_size: float = 7.5,
+        title_size: float = 9.0,
+        badge_size: float = 8.0,
     ) -> None:
         y = self._y(y_top + h)
         self.ax.add_patch(
@@ -152,7 +164,7 @@ class Canvas:
         h: float,
         label: str,
         family: str = "process",
-        fontsize: float = 6.5,
+        fontsize: float = 8.0,
         id: str = "",
     ) -> None:
         fam = FAMILIES[family]
@@ -224,8 +236,8 @@ class Canvas:
         for spine in ax2.spines.values():
             spine.set_linewidth(0.5)
             spine.set_color("#9E9E9E")
-        ax2.tick_params(labelsize=6.5, width=0.4, length=2, colors="#444444")
-        self.els.append(El("plot", id, (x, y, w, h), 6.5))
+        ax2.tick_params(labelsize=8.0, width=0.4, length=2, colors="#444444")
+        self.els.append(El("plot", id, (x, y, w, h), 8.0))
         return ax2
 
     def text(
@@ -254,7 +266,7 @@ class Canvas:
         prefix: str = "Legend:",
         sw: float = 4.0,
         sh: float = 2.8,
-        fontsize: float = 6.5,
+        fontsize: float = 8.0,
         gap: float = 3.5,
     ) -> None:
         cx = x
