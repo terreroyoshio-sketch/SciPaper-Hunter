@@ -52,3 +52,23 @@
 - 零安装：只提取模式，不部署来源项目；任何安装需单独批准
 - 来源数字标注核验方式（API/页面/未核）与快照日期；自报与独立复测分开写
 - 下轮候选：写作治理波（sepia/CCFA-Skills 等 6 项）、addyosmani/agent-skills、CLI-Anything（见决策报告）
+
+## v0.4 — 2026-09-28 第二批：插件安装 + 写作波 + Addy 审计 + provenance 落地
+
+### 新增
+- `.claude/skills/completion-guard-patterns/`（SKILL.md + references/unlazy-stopthatshit-evidence.md；用户级镜像同）
+- `reports/github_writing_wave_audit_20260928.md`（写作治理波 7 项决策报告）
+- `reports/addy_agent_skills_audit_20260928.md`（Addy agent-skills 审计）
+
+### 安装与外部变更（用户级 ~/.claude，均经批准）
+- knowledge-work-plugins 市场 + 4 插件：bio-research 1.2.0 / data 1.1.0 / pdf-viewer 0.2.0 / cowork-plugin-management 0.2.2（user scope, enabled）
+- sepia@sepia 0.12.2（只读快审通过后安装：MIT、无 hooks/MCP、脚本纯本地）
+- agent-skills@addyosmani-agent-skills 0.6.10 → 0.6.11（经一次性 HTTPS 改写绕过 SSH 阻塞）
+- 删除孤儿克隆 marketplaces/addy-agent-skills（备份 + deletion_log）
+
+### 主 checkout（workbench-v2 线，未提交，留给你）
+- `.codex` + `.agents` provenance skill → v1.1.1：新增 `references/artifact-and-review-evidence.md` + SKILL.md 引用行；.agents 由 1.0.0 同步至与 .codex 一致（既有漂移修复）
+- 备份：`.research-ai/backups/20260928-115533-before-provenance-1.1.1/`
+
+### 规则/发现
+- claude CLI 位于 `%LOCALAPPDATA%\Claude-3p\claude-code\2.1.128\claude.exe`（不在 PATH）；插件更新遇 SSH 阻塞时，用一次性 `GIT_CONFIG_*` 环境变量改写为 HTTPS（不改全局 git 配置）

@@ -11,3 +11,11 @@ timestamp,action,file_path,reason,agent_or_command,backup_path
 2026-09-27 17:56:06,CREATE,reports/github_candidate_audit_20260927.md,full decision report for scan round,claude-code-github-fusion,
 2026-09-27 17:56:06,CREATE,reports/open-science_gap_analysis_20260927.md,gap audit vs aipoch/open-science (page-level, read-only),claude-code-github-fusion,
 2026-09-27 17:56:06,MODIFY,<main-checkout>/.research-ai/engineering-skill-registry.yaml,append pattern_skill_sources_round_20260927,claude-code-github-fusion,.research-ai/backups/20260927-175556-before-github-fusion/
+2026-09-28 11:56:10,CREATE,.claude/skills/completion-guard-patterns/,batch2: pattern skill (repo copy + user-level mirror),claude-code-batch2,
+2026-09-28 11:56:10,CREATE,reports/github_writing_wave_audit_20260928.md,batch2: writing wave decision report (7 items),claude-code-batch2,
+2026-09-28 11:56:10,CREATE,reports/addy_agent_skills_audit_20260928.md,batch2: addy agent-skills audit,claude-code-batch2,
+2026-09-28 11:56:10,INSTALL,~/.claude/plugins (bio-research+data+pdf-viewer+cowork-plugin-management@knowledge-work-plugins),user-approved install via claude.exe,claude-code-batch2,
+2026-09-28 11:56:10,INSTALL,~/.claude/plugins (sepia@sepia 0.12.2),read-only audit passed then installed,claude-code-batch2,
+2026-09-28 11:56:10,UPDATE,~/.claude/plugins (agent-skills 0.6.10 to 0.6.11),user-approved update,claude-code-batch2,
+2026-09-28 11:56:10,DELETE,~/.claude/plugins/marketplaces/addy-agent-skills,orphan clone; backup+deletion_log,claude-code-batch2,.claude/plugins/backups/addy-agent-skills.bak_20260928_115338,
+2026-09-28 11:56:10,MODIFY,<main-checkout>/.codex+.agents/skills/research-execution-provenance,landing: v1.1.1 + artifact-and-review-evidence + .agents sync,claude-code-batch2,.research-ai/backups/20260928-115533-before-provenance-1.1.1/,

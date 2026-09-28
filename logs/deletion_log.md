@@ -15,4 +15,13 @@
 
 ---
 
-*暂无删除记录*
+
+
+## 删除记录
+- **删除时间:** 2026-09-28 11:53:40
+- **删除路径:** C:\Users\张涵\.claude\plugins\marketplaces\addy-agent-skills\
+- **删除原因:** 孤儿市场克隆（未在 known_marketplaces.json / settings.json / installed_plugins.json 中引用；功能已被 addyosmani-agent-skills 覆盖）
+- **是否备份:** 是 → /c/Users/张涵/.claude/plugins/backups/addy-agent-skills.bak_20260928_115338
+- **是否可恢复:** 是
+- **执行者:** claude-code-github-fusion（用户已批准）
+- **风险说明:** ~982K 占位副本，零引用；如误判可从备份整目录恢复
