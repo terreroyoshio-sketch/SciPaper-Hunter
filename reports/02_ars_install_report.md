@@ -128,3 +128,11 @@ academic-paper-reviewer 9、academic-pipeline 13、deep-research 16），引用�
 
 - **scripts/ 随装**：技能内结构化引用 `../../../scripts/adapters/`（见 `academic-pipeline/references/adapters/overview.md`）解析到 `.claude/skills/scripts/`；此前 scripts/ 一直未随装（与 shared/ 同类问题，09-18 只补了 shared/）。本轮自 `~/.claude/reference/ars-v3.20-extract/scripts`（v3.22.0 @3c546bc）随装 **scripts/（432 条目，约 13 MB）**，含 `check_revision_token_conservation.py`（#570）、`ars_apply_revision_patch.py`、`claim_audit_pipeline.py` 等被引用脚本。
 - **并入 master**：本 worktree 的两个提交以 merge 方式并入本地 `master`（`logs/deletion_log.md` 两侧追加记录按并集合并）；未推送 origin。
+
+---
+
+## 10. 2026-09-29（回访）跟进上游 main `96a442e`
+
+- 上游从 `3c546bc`（v3.22.0）前进到 `96a442e`（v3.22.2 + Unreleased；头条：run-ledger、routing-core、acronym / skill-description 检查等）。
+- 本轮同步：打包内 80 个文件（12 新增 + 68 修改，0 删除），commit `e7b58c92`；六个根目录与上游 latest 逐一 `diff -rq` 核对——五个目录 0 差异；`scripts/` 余 6 处为行尾（CRLF）差异，`commands/` 的 17 处为本仓自有命令（上游恰为 16 个 `ars-*`，无缺失）。
+- 署名件随同补充：`shared/ARS-LICENSE.txt`、`shared/ARS-NOTICE.md`、`shared/ARS-ATTRIBUTION.md`（供推送到 origin 时随附）。
