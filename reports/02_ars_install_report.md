@@ -88,3 +88,36 @@ git pull --depth 1
 ├── autonomous-survey-agent/          # 已有（之前创建）
 └── sci-research-writing-narrative/   # 已有
 ```
+
+---
+
+## 8. 2026-09-18 升级附记（v3.11.1 → v3.22.0）
+
+**触发**：用户看到一份 ARS 提问手册，描述的是 v3.20.1 的功能；核对发现本地为 v3.11.1，手册里约一半场景会落空。
+
+**升级前的实测差距**（v3.11.1 本地）：
+- 斜杠命令只有 5 个（ars-audit / ars-draft / ars-lit / ars-pipeline-test / ars-review），
+  手册依赖的 `/ars-revision-coach`、`/ars-rebuttal-audit`、`/ars-outline`、`/ars-plan`、
+  `/ars-reviewer`、`/ars-disclosure`、`/ars-3w`、`/ars-citation-check`、`/ars-full` 全部不存在。
+- 模式实测缺失：revision-coach 0 文件、rebuttal-audit 0、claim-strength 梯子 0、答辩委员会变体 0。
+
+**发现的一个长期缺陷**：4 个技能大量引用 `shared/...`（academic-paper 18 个文件、
+academic-paper-reviewer 9、academic-pipeline 13、deep-research 16），引用写作 `../../shared/`，
+即 `shared/` 必须是技能目录的同级。**但原始安装（见 §1）只拷了 4 个技能目录，从未拷 `shared/`**，
+因此这些引用一直是断链的。
+
+**本轮操作**（全部在 worktree `elegant-almeida-f7d963` 内，主仓未动）：
+1. `git fetch --depth 1 origin main` → 上游 HEAD `3c546bc` (2026-09-16)，**实际版本 v3.22.0**
+   （比手册说的 v3.20.1 更新）。
+2. 用 `git archive origin/main | tar -x` 非破坏性解出到 `~/.claude/reference/ars-v3.20-extract/`。
+3. 验证上游确有手册所述功能：`commands/` 下 16 个 `ars-*.md`（含 revision-coach、rebuttal-audit、
+   outline、plan、reviewer、disclosure、3w、citation-check、full）；`claim-strength` 命中 32 个 md、
+   `committee` 113 个、`direct-mode` 14 个。
+4. 备份原版本到 `backups/ars_v3.11.1_20260918/`（185 个文件）。
+5. 安装：4 个技能更新（63/28/30/53 文件）+ **补上 `shared/`（149 文件）** + 16 个命令。
+6. 验证：45 个被引用的 `shared/` 路径**全部命中，0 缺失**。
+
+**未做**：未更新主仓（`C:/Users/张涵/Desktop/项目/skill/.claude/`）——主仓当时在 `test/office-smoke`
+分支且有未提交改动，不宜叠加。两份副本升级前完全相同，升级后 worktree 领先。
+
+**许可**：仍为 CC-BY-NC 4.0（非商用），Copyright (c) 2026 Cheng-I Wu，未变。
