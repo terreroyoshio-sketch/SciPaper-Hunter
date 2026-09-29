@@ -121,3 +121,10 @@ academic-paper-reviewer 9、academic-pipeline 13、deep-research 16），引用�
 分支且有未提交改动，不宜叠加。两份副本升级前完全相同，升级后 worktree 领先。
 
 **许可**：仍为 CC-BY-NC 4.0（非商用），Copyright (c) 2026 Cheng-I Wu，未变。
+
+---
+
+## 9. 2026-09-29 收口补记（scripts/ 随装 → 并入 master）
+
+- **scripts/ 随装**：技能内结构化引用 `../../../scripts/adapters/`（见 `academic-pipeline/references/adapters/overview.md`）解析到 `.claude/skills/scripts/`；此前 scripts/ 一直未随装（与 shared/ 同类问题，09-18 只补了 shared/）。本轮自 `~/.claude/reference/ars-v3.20-extract/scripts`（v3.22.0 @3c546bc）随装 **scripts/（432 条目，约 13 MB）**，含 `check_revision_token_conservation.py`（#570）、`ars_apply_revision_patch.py`、`claim_audit_pipeline.py` 等被引用脚本。
+- **并入 master**：本 worktree 的两个提交以 merge 方式并入本地 `master`（`logs/deletion_log.md` 两侧追加记录按并集合并）；未推送 origin。
